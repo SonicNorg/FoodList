@@ -1,11 +1,11 @@
 package name.nepavel.foodlist.model
 
 data class FoodItem(val name: String,
-                    val prot: Float,
+                    val protein: Float,
                     val fat: Float,
-                    val carb: Float,
+                    val carbs: Float,
                     val cal: Int,
-                    val cell: Int?,
+                    val cellulose: Int?,
                     val category: String?,
                     val link: String? = null) {
 

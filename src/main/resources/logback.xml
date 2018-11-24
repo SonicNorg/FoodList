@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--Аппендеры -->
+    <!--Файловый аппендер -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>log.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- keep 10 days' worth of history capped at 5GB total size -->
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{30} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--Консольный аппендер -->
+    <appender name="SOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Логгеры -->
+    <!-- Корневой логгер -->
+
+    <root level="DEBUG">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="SOUT"/>
+    </root>
+</configuration>

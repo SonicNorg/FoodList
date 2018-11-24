@@ -1,9 +1,11 @@
 package name.nepavel.foodlist.processor
 
 import name.nepavel.foodlist.model.FoodItem
+import org.slf4j.LoggerFactory
 import java.util.*
 
 class DataLoader(val name: String, private val siteAccessor: SiteAccessor, private val dataExtractor: DataExtractor) {
+    private val log = LoggerFactory.getLogger(this::class.java)
     private lateinit var queue: Queue<FoodItem>
 
     fun queue(queue: Queue<FoodItem>) {
@@ -17,7 +19,7 @@ class DataLoader(val name: String, private val siteAccessor: SiteAccessor, priva
                 if (Thread.currentThread().isInterrupted) return@forEach
             }
         } catch (e: Exception) {
-            //log.error("Exception while loading data by $name: ", e)
+            log.error("Exception while loading data by $name: ", e)
         }
         return Date()
     }

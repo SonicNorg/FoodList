@@ -9,11 +9,11 @@ class IntelmealTest {
 
     @Test
     @Ignore("Этот тест реально потащит ВСЕ данные. Использовался для отладки парсера.")
-    fun testAutoClub48() {
+    fun testIntelmeal() {
         val acc = IntelmealAcc()
         val ex = IntelmealEx()
         val queue = LinkedBlockingQueue<FoodItem>()
-        val dataLoader = DataLoader("AutoClub48", acc, ex)
+        val dataLoader = DataLoader("Intelmeal", acc, ex)
         dataLoader.queue(queue)
         dataLoader.process()
     }
